@@ -9,4 +9,5 @@ import retrofit2.http.Query
 interface PlaceService {
     @GET("v2/place?token=${MultiWeatherApplication.TOKEN}&lang=zh_CN")
     suspend fun searchPlaces(@Query("query") query: String): Call<PlaceResponse>
+
 }
