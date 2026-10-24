@@ -1,18 +1,20 @@
 package com.example.multiweather.ui.place
 
 import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.multiweather.R
 import com.example.multiweather.logic.model.Place
 
-class PlaceAdapter(private val fragment : Fragment,private val placeList: List<Place>) : RecyclerView.Adapter<PlaceAdapter.ViewHolder>() {
-    inner class ViewHolder(view: android.view.View) : RecyclerView.ViewHolder(view) {
+class PlaceAdapter(private val fragment : Fragment, private val placeList: List<Place>) : RecyclerView.Adapter<PlaceAdapter.ViewHolder>() {
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val placeName = view.findViewById<TextView>(R.id.placeName)
         val placeAddress = view.findViewById<TextView>(R.id.placeAddress)
     }
-    override fun onCreateViewHolder(parent: android.view.ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.place_item,parent,false)
         return ViewHolder(view)
     }
