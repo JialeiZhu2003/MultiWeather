@@ -1,5 +1,15 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
+}
+
+// 从 local.properties 读取签名信息（该文件已被 .gitignore 忽略，不会上传到 GitHub）
+val localProps = Properties().apply {
+    val propsFile = rootProject.file("local.properties")
+    if (propsFile.exists()) {
+        propsFile.inputStream().use { this.load(it) }
+    }
 }
 
 android {
@@ -23,11 +33,21 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("config"){
+            storeFile = file(localProps.getProperty("KEY_PATH"))
+            storePassword = localProps.getProperty("KEY_PASS")
+            keyAlias = localProps.getProperty("ALIAS_NAME")
+            keyPassword = localProps.getProperty("ALIAS_PASS")
+        }
+    }
+
     buildTypes {
         release {
             optimization {
                 enable = false
             }
+            signingConfig = signingConfigs.getByName("config")
         }
     }
     compileOptions {
