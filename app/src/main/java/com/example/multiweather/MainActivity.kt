@@ -9,6 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.statusBarColor = getColor(R.color.colorPrimary)
         setContentView(R.layout.activity_main)
     }
 }

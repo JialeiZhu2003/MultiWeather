@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="#fff" 
                 android:textSize="18sp"
-                android:text="|" />
+                android:text=" | " />
 
             <TextView
                 android:id="@+id/currentAQI"
